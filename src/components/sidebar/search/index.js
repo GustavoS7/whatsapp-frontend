@@ -1,3 +1,5 @@
-import { Search } from "./Search";
+import { Search } from "./Search"
+import { Contact } from "./Contact"
+import { SearchResults } from "./SearchResults"
 
-export { Search }
+export { Search, SearchResults, Contact }

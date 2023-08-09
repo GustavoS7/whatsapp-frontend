@@ -1,3 +1,5 @@
+import { dateHanlder } from '../../../utils/date'
+
 export function Conversation ({ conversation }) {
   return (
     <li className="list-none h-[72px] w-full dark:bg-dark_bg_1 hover:dark:bg-dark_bg_2 cursor-pointer dark:text-dark_text_1 px-[10px]">
@@ -22,6 +24,11 @@ export function Conversation ({ conversation }) {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col gap-y-4 items-end text-xs">
+          <span className="dark:text-dark_text_2">
+            {dateHanlder(conversation.latestMessage?.createdAt)}
+          </span>
         </div>
       </div>
     </li>
