@@ -2,12 +2,14 @@ import axios from "axios"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const CONVERSATION_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT}/conversation`
+const MESSAGE_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT}/message`
 
 const initialState = {
   status: '',
   error: '',
   conversations: [],
   activeConversation: {},
+  messages: [],
   notifications: []
 }
 
@@ -33,9 +35,56 @@ export const open_create_conversation = createAsyncThunk(
   async (values, { rejectWithValue }) => {
     const { token, receiver_id } = values
     try {
-      const { data } = await axios.get(
+      const { data } = await axios.post(
         CONVERSATION_ENDPOINT, 
         { receiver_id }, 
+        {
+          headers: {
+            Authorization: `bearer ${token}`
+          }
+        }
+      )
+
+      return data
+    } catch (error) {
+      return rejectWithValue(error.response.data.error.message)
+    }
+  }
+)
+
+export const get_conversation_messages = createAsyncThunk(
+  'conversation/messages', 
+  async (values, { rejectWithValue }) => {
+    const { token, conversation_id } = values
+    try {
+      const { data } = await axios.get(
+        `${MESSAGE_ENDPOINT}/${conversation_id}`, 
+        {
+          headers: {
+            Authorization: `bearer ${token}`
+          }
+        }
+      )
+
+      return data
+    } catch (error) {
+      return rejectWithValue(error.response.data.error.message)
+    }
+  }
+)
+
+export const send_message = createAsyncThunk(
+  'message/send', 
+  async (values, { rejectWithValue }) => {
+    const { token, message, conversation_id, files } = values
+    try {
+      const { data } = await axios.post(
+        MESSAGE_ENDPOINT, 
+        {
+          message,
+          conversation_id,
+          files
+        },
         {
           headers: {
             Authorization: `bearer ${token}`
@@ -79,6 +128,32 @@ export const chatSlice = createSlice({
       state.activeConversation = action.payload
     })
     .addCase(open_create_conversation.rejected, (state, action) => {
+      state.status = 'failed'
+      state.error = action.payload
+    })
+    .addCase(get_conversation_messages.pending, (state, action) => {
+      state.status = 'loading'
+    })
+    .addCase(get_conversation_messages.fulfilled, (state, action) => {
+      state.status = 'succeeded'
+      state.messages = action.payload
+    })
+    .addCase(get_conversation_messages.rejected, (state, action) => {
+      state.status = 'failed'
+      state.error = action.payload
+    })
+    .addCase(send_message.pending, (state, action) => {
+      state.status = 'loading'
+    })
+    .addCase(send_message.fulfilled, (state, action) => {
+      state.status = 'succeeded'
+      state.messages = [ ...state.messages, action.payload ]
+      const conversation = {...action.payload.conversation, latestMessage: action.payload}
+      const newConversations = [...state.conversations].filter((c) => c._id !== conversation._id)
+      newConversations.unshift(conversation)
+      state.conversations = newConversations
+    })
+    .addCase(send_message.rejected, (state, action) => {
       state.status = 'failed'
       state.error = action.payload
     })

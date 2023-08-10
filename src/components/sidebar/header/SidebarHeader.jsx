@@ -12,7 +12,7 @@ export function SidebarHeader () {
   const [showMenu, setShowMenu] = useState(false)
 
   return (
-    <div className="h-[50px] dark:bg-dark_bg_2 flex items-center px-16">
+    <div className="h-[50px] dark:bg-dark_bg_2 flex items-center px-[16px]">
       <div className="w-full flex items-center justify-between">
         <button className="btn">
           <img 

@@ -1,12 +1,13 @@
-import { useState } from "react"
-import { FilterIcon, ReturnIcon, SearchIcon } from "../../../svg"
 import axios from "axios"
-import { useSearchParams } from "react-router-dom"
+import { useState } from "react"
+import { useSelector } from "react-redux"
+
+import { FilterIcon, ReturnIcon, SearchIcon } from "../../../svg"
 
 export function Search ({ searchLength, setSearchResults }) {
   
-  const { user } = useSearchParams((state) => state.user)
-  const [show, setShow] = useState()
+  const { user } = useSelector((state) => state.user)
+  const [show, setShow] = useState(false)
 
   const handleSearch = async (evt) => {
     if (evt.target.value && evt.key === 'Enter') {

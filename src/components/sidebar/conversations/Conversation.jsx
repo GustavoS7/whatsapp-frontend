@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
+
 import { dateHanlder } from '../../../utils/date'
-import { open_create_conversation } from '../../../features/chatSlice'
+import { capitalize } from '../../../utils/string'
 import { getConversationId } from '../../../utils/chat'
+import { open_create_conversation } from '../../../features/chatSlice'
 
 export function Conversation ({ conversation }) {
 
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
+  const { activeConversation } = useSelector((state) => state.chat)
 
   const values = {
     receiver_id: getConversationId(user, conversation.users),
@@ -19,7 +22,7 @@ export function Conversation ({ conversation }) {
 
   return (
     <li 
-      className="list-none h-[72px] w-full dark:bg-dark_bg_1 hover:dark:bg-dark_bg_2 cursor-pointer dark:text-dark_text_1 px-[10px]"
+      className={`list-none h-[72px] w-full dark:bg-dark_bg_1 hover:${conversation._id === activeConversation._id ? '' : 'dark:bg-dark_bg_2'} cursor-pointer dark:text-dark_text_1 px-[10px] ${conversation._id === activeConversation._id ? 'dark:bg-dark_hover_1' : ''}`}
       onClick={() => openConversation()}
     >
       <div className="relative w-full flex items-center justify-between py-[10px]">
@@ -33,7 +36,7 @@ export function Conversation ({ conversation }) {
           </div>
           <div className="w-full flex flex-col">
             <h1 className="font-bold flex items-center gap-x-2">
-              {conversation.name}
+              {capitalize(conversation.name)}
             </h1>
             <div>
               <div className="flex items-center gap-x-1 dark:text-dark_text_2">

@@ -15,10 +15,9 @@ export function Notifications () {
               <ArrowIcon className="dark:fill-dark_svg_2 mt-1" />
             </span>
           </div>
-
-          <div className="cursor-pointer">
-            <CloseIcon className="dark:fill-dark_svg_2" />
-          </div>
+        </div>
+        <div className="cursor-pointer">
+          <CloseIcon className="dark:fill-dark_svg_2" />
         </div>
       </div>
     </div>

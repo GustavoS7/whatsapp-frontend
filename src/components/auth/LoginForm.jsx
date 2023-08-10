@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch, useSelector } from "react-redux"
 
 import { AuthInput } from "./AuthInput"
-import { signUpSchema } from "../../utils/validation"
+import { signInSchema  } from "../../utils/validation"
 import { loginUser } from "../../features/userSlice"
 
 export function LoginForm () {
@@ -19,11 +19,14 @@ export function LoginForm () {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver(signUpSchema)
+    resolver: yupResolver(signInSchema)
   })
 
   const onSubmit = async (values) => {
     const res = await dispatch(loginUser({ ...values }))
+
+    console.log(res)
+
     if (res?.payload?.user) {
       navigate('/')
     }
@@ -82,7 +85,7 @@ export function LoginForm () {
           <p className="flex flex-col items-center justify-center mt-10 text-center text-md dark:text-dark_text_1">
             <span>you do not have an account?</span>
             <Link 
-              href='/register'
+              to='/register'
               className='hover:underline cursor-pointer transition ease-in duration-300'
             >
               Sign up

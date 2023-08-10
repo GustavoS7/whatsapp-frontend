@@ -7,7 +7,7 @@ import { Register } from './pages/register'
 
 export function App() {
 
-  const { user } =  useSelector((state) => ({ ...state }))
+  const { user } =  useSelector((state) => state.user)
 
   const { token } = user
 
