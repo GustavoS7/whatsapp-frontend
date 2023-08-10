@@ -4,10 +4,10 @@ import { ChatIcon, CommunityIcon, DotsIcon, StoryIcon } from '../../../svg'
 import { useState } from "react"
 import { Menu } from "./"
 
-import { logout } from '../../../fe'
-
 export function SidebarHeader () {
   
+  
+
   const { user } = useSelector((state) => state.user)
   const [showMenu, setShowMenu] = useState(false)
 
