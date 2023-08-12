@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux"
 
-import { Conversation } from "./Conversation"
+import Conversation from "./Conversation"
+import { checkOnlineStatus } from "../../../utils/chat"
 
-export function Conversations () {
+export function Conversations ({ onlineUsers, typing }) {
   const { conversations, activeConversation } = useSelector((state) => state.chat)
 
-  console.log(conversations, activeConversation)
+  const { user } = useSelector((state) => state.user)
 
   return (
     <div className="conversations scrollbar">
@@ -13,9 +14,17 @@ export function Conversations () {
         {
           conversations && conversations
           .filter((c) => c.latestMessage || c._id === activeConversation._id)
-          .map((conversation) => (
-            <Conversation conversation={conversation} key={conversation._id} />
-          ))
+          .map((conversation) => {
+            const check = checkOnlineStatus(onlineUsers, user, conversation.users)
+            return (
+              <Conversation 
+                conversation={conversation} 
+                key={conversation._id} 
+                online={check ? true : false} 
+                typing={typing}
+              />
+            )
+          })
         }
       </ul>
     </div>

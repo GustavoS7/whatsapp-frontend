@@ -5,8 +5,9 @@ import { ChatHeader } from "./header/"
 import { ChatActions } from "./actions"
 import { ChatMessages } from "./messages/"
 import { get_conversation_messages } from "../../features/chatSlice"
+import { checkOnlineStatus } from "../../utils/chat"
 
-export function ChatContainer () {
+export function ChatContainer ({ onlineUsers, typing }) {
 
   const dispatch = useDispatch()
 
@@ -28,9 +29,9 @@ export function ChatContainer () {
   return (
     <div className="relative w-full h-full border-l dark:border-l-dark_border_2 select-none overflow-hidden">
       <div>
-        <ChatHeader />
+        <ChatHeader online={checkOnlineStatus(onlineUsers, user, activeConversation.users)} />
         
-        <ChatMessages />
+        <ChatMessages typing={typing} />
 
         <ChatActions />
       </div>
