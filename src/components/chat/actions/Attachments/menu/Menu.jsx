@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CameraIcon, ContactIcon, DocumentIcon, PhotoIcon, PollIcon, StickerIcon } from "../../../../svg";
+import { CameraIcon, ContactIcon, DocumentIcon, PollIcon, StickerIcon } from "../../../../../svg";
+import { PhotoAttachment } from "./PhotoAttachments";
 
 export function Menu () {
 
@@ -32,11 +33,7 @@ export function Menu () {
           <StickerIcon />
         </button>
       </li>
-      <li>
-        <button type="button" className="bg-[#bf59cf] rounded-full">
-          <PhotoIcon />
-        </button>
-      </li>
+      <PhotoAttachment/>
     </ul>
   )
 }
