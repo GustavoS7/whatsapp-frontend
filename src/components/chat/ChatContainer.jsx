@@ -6,12 +6,13 @@ import { ChatActions } from "./actions"
 import { ChatMessages } from "./messages/"
 import { checkOnlineStatus } from "../../utils/chat"
 import { get_conversation_messages } from "../../features/chatSlice"
+import { FilesPreview } from "./preview/files/FilesPreview"
 
 export function ChatContainer ({ onlineUsers, typing }) {
 
   const dispatch = useDispatch()
 
-  const { activeConversation } = useSelector((state) => state.chat)
+  const { activeConversation, files } = useSelector((state) => state.chat)
   const { user } = useSelector((state) => state.user)
 
   const values = {
@@ -31,9 +32,18 @@ export function ChatContainer ({ onlineUsers, typing }) {
       <div>
         <ChatHeader online={checkOnlineStatus(onlineUsers, user, activeConversation.users)} />
         
-        <ChatMessages typing={typing} />
+        {
+          files.length > 0 ? (
+            <FilesPreview />
+          ) : (
+            <>
+              <ChatMessages typing={typing} />
 
-        <ChatActions />
+              <ChatActions />
+            </>
+          )
+        }
+
       </div>
     </div>
   )

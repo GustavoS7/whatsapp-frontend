@@ -1,17 +1,17 @@
 import { useRef } from "react"
 import { useDispatch } from "react-redux"
 
-import { DocumentIcon } from "../../../../../svg"
-import { getFileType } from "../../../../../utils/file"
-import { addFiles } from "../../../../../features/chatSlice"
+import { CloseIcon } from "../../../../svg"
+import { getFileType } from "../../../../utils/file"
+import { addFiles } from "../../../../features/chatSlice"
 
-export function DocumentAttachment() {
+export function Add ({ setActiveIndex }) {
 
   const dispatch = useDispatch()
 
   const inputRef = useRef(null)
 
-  const documentHandler = (evt) => {
+  const filesHandler = (evt) => {
     let files = Array.from(evt.target.files)
     files.forEach((file) => {
       if (
@@ -26,7 +26,14 @@ export function DocumentAttachment() {
         file.type !== 'application/vnd.rar' &&
         file.type !== 'application/zip' &&
         file.type !== 'audio/mp3' &&
-        file.type !== 'audio/wav'
+        file.type !== 'audio/wav' &&
+        file.type !== 'image/png' &&
+        file.type !== 'image/jpeg' &&
+        file.type !== 'image/gif' &&
+        file.type !== 'image/wepb' &&
+        file.type !== 'video/mp4' &&
+        file.type !== 'video/mpeg' &&
+        file.type !== 'video/webm'
       ) {
         files = files.filter((item) => item.name !== file.name)
         return
@@ -40,6 +47,7 @@ export function DocumentAttachment() {
           dispatch(
             addFiles({ 
               file: file, 
+              fileData: getFileType(file.type) === 'IMAGE' ? e.target.result : '',
               type: getFileType(file.type)
             })
           )
@@ -49,26 +57,22 @@ export function DocumentAttachment() {
   }
 
   return (
-    <li>
-      <button 
-        type="button" 
-        className="bg-[#5f66cd] rounded-full" 
-        onClick={() => inputRef.current.click()}
-      >
-        <DocumentIcon />
-      </button>
+    <div 
+      className="w-14 h-14 border dark:border-white rounded-md flex items-center mt-2 justify-center cursor-pointer"
+      onClick={() => inputRef.current.click()}
+    >
+      <span className="rotate-45">
+        <CloseIcon className="dark:fill-dark_svg_1" />
+      </span>
+      
       <input 
         type="file" 
         hidden
         multiple
         ref={inputRef}
-        accept="
-          application/pdf,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,
-          application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-excel,
-          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.rar,application/zip,audio/mp3,audio/wav
-        "
-        onChange={documentHandler}
+        accept="application/*,text/plain,image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm"
+        onChange={filesHandler}
       />
-    </li>
+    </div>
   )
 }

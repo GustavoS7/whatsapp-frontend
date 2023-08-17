@@ -56,7 +56,7 @@ export function PhotoAttachment () {
         hidden 
         multiple
         ref={inputRef} 
-        image="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm" 
+        accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm" 
         onChange={imageHandler}
       />
     </li>
