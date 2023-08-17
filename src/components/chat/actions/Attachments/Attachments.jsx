@@ -1,5 +1,5 @@
-import { Menu } from "./menu/Menu";
-import { AttachmentIcon } from "../../../../svg";
+import { Menu } from "./menu/Menu"
+import { AttachmentIcon } from "../../../../svg"
 
 export function Attachments ({ showAttachments, setShowAttachments, setShowEmoji }) {
 

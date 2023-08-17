@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { CameraIcon, ContactIcon, DocumentIcon, PollIcon, StickerIcon } from "../../../../../svg";
-import { PhotoAttachment } from "./PhotoAttachments";
+import { PhotoAttachment } from "./PhotoAttachments"
+import { DocumentAttachment } from "./DocumentAttachments"
+import { CameraIcon, ContactIcon, PollIcon, StickerIcon } from "../../../../../svg"
 
 export function Menu () {
 
-  const [show, setShow] = useState(false)
-  
   return (
     <ul className="absolute bottom-12 openEmojiAnimation">
       <li>
@@ -18,11 +16,7 @@ export function Menu () {
           <ContactIcon />
         </button>
       </li>
-      <li>
-        <button type="button" className="bg-[#5f66cd] rounded-full">
-          <DocumentIcon />
-        </button>
-      </li>
+      <DocumentAttachment />
       <li>
         <button type="button" className="bg-[#d3396d] rounded-full">
           <CameraIcon />
@@ -33,7 +27,7 @@ export function Menu () {
           <StickerIcon />
         </button>
       </li>
-      <PhotoAttachment/>
+      <PhotoAttachment />
     </ul>
   )
 }

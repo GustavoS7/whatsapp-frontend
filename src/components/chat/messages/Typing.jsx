@@ -1,4 +1,4 @@
-import { BeatLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners"
 
 export function Typing () {
   return (

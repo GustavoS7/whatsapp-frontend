@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { dateHanlder } from '../../../utils/date'
 import { capitalize } from '../../../utils/string'
-import { getConversationId, getConversationName, getConversationPicture } from '../../../utils/chat'
 import SocketContext from '../../../context/socketContext'
 import { open_create_conversation } from '../../../features/chatSlice'
+import { getConversationId, getConversationName, getConversationPicture } from '../../../utils/chat'
 
 function Conversation ({ conversation, socket, online, typing }) {
 

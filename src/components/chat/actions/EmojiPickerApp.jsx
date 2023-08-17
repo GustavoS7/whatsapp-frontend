@@ -1,7 +1,7 @@
-import EmojiPicker from "emoji-picker-react";
+import { useEffect, useState } from "react"
+import EmojiPicker from "emoji-picker-react"
 
-import { CloseIcon, EmojiIcon } from "../../../svg";
-import { useEffect, useState } from "react";
+import { CloseIcon, EmojiIcon } from "../../../svg"
 
 export function EmojiPickerApp ({ textRef, message, setMessage, showEmoji, setShowEmoji, setShowAttachments }) {
 

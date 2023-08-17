@@ -1,4 +1,4 @@
-import { ArrowIcon, CloseIcon, NotificationIcon } from "../../../svg";
+import { ArrowIcon, CloseIcon, NotificationIcon } from "../../../svg"
 
 export function Notifications () {
   return (

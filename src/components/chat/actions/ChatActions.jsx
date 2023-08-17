@@ -1,11 +1,11 @@
 import { useRef, useState } from "react"
+import { ClipLoader } from "react-spinners"
+import { useDispatch, useSelector } from "react-redux"
 
 import { SendIcon } from "../../../svg"
 import { EmojiPickerApp, Input } from "./"
 import { Attachments } from "./Attachments"
-import { useDispatch, useSelector } from "react-redux"
 import { send_message } from "../../../features/chatSlice"
-import { ClipLoader } from "react-spinners"
 import SocketContext from "../../../context/socketContext"
 
 function ChatActions ({ socket }) {

@@ -1,33 +1,42 @@
 import { useRef } from "react"
+import { useDispatch } from "react-redux"
+
 import { PhotoIcon } from "../../../../../svg"
-import { useDispatch, useSelector } from "react-redux"
+import { getFileType } from "../../../../../utils/file"
 import { addFiles } from "../../../../../features/chatSlice"
 
 export function PhotoAttachment () {
 
   const dispatch = useDispatch()
 
-  const inputRef = useRef()
+  const inputRef = useRef(null)
 
   const imageHandler = (evt) => {
     let files = Array.from(evt.target.files)
-    files.forEach((img) => {
+    files.forEach((file) => {
       if (
-        img.type !== 'image/png' &&
-        img.type !== 'image/jpeg' &&
-        img.type !== 'image/gif' &&
-        img.type !== 'image/wepb'
+        file.type !== 'image/png' &&
+        file.type !== 'image/jpeg' &&
+        file.type !== 'image/gif' &&
+        file.type !== 'image/wepb' &&
+        file.type !== 'video/mp4' &&
+        file.type !== 'video/mpeg' &&
+        file.type !== 'video/webm'
       ) {
-        files = files.filter((item) => item.name !== img.name)
+        files = files.filter((item) => item.name !== file.name)
         return
-      } else if (img.size > 1024 * 1024 * 5) {
-        files = files.filter((item) => item.name !== img.name)
+      } else if (file.size > 1024 * 1024 * 5) {
+        files = files.filter((item) => item.name !== file.name)
         return
       } else {
         const reader = new FileReader()
-        reader.readAsDataURL(img)
+        reader.readAsDataURL(file)
         reader.onload = (e) => {
-          dispatch(addFiles({ file: img, imgData: e.target.result, type: 'image' }))
+          dispatch(addFiles({ 
+            file: file, 
+            fileData: e.target.result, 
+            type: getFileType(file.type)
+          }))
         }
       }
     })
@@ -45,8 +54,9 @@ export function PhotoAttachment () {
       <input 
         type="file" 
         hidden 
-        ref={useRef} 
-        image="image/png,image/jpeg,image/gif,image/webp" 
+        multiple
+        ref={inputRef} 
+        image="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm" 
         onChange={imageHandler}
       />
     </li>
