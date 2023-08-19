@@ -5,8 +5,8 @@ import { ChatHeader } from "./header/"
 import { ChatActions } from "./actions"
 import { ChatMessages } from "./messages/"
 import { checkOnlineStatus } from "../../utils/chat"
-import { get_conversation_messages } from "../../features/chatSlice"
 import { FilesPreview } from "./preview/files/FilesPreview"
+import { get_conversation_messages } from "../../features/chatSlice"
 
 export function ChatContainer ({ onlineUsers, typing }) {
 

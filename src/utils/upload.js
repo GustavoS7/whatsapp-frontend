@@ -5,7 +5,7 @@ const cloud_secret = process.env.REACT_APP_CLOUD_SECRET
 
 export const uploadFiles = async (files) => {
   const formData = new FormData()
-  formData.append('upload', cloud_secret)
+  formData.append('upload_preset', cloud_secret)
   const uploaded = []
   for (const f of files) {
     const { file, type } = f
@@ -22,12 +22,13 @@ export const uploadFiles = async (files) => {
 const uploadToCloudinary = async (formData) => {
   return new Promise(async (resolve) => {
     return await axios.post(
-      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formData
+      `https://api.cloudinary.com/v1_1/${cloud_name}/raw/upload`, formData
     )
     .then(({ data }) => {
       resolve(data)
     })
     .catch((err) => {
+      console.log('errror cloudinary')
       console.log(err)
     })
   })

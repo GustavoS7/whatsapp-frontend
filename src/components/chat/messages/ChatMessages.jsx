@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react"
 
 import { Typing } from "./Typing"
 import { Message } from "./Message"
+import { FileMessage } from "./files/FileMessage"
 
 export function ChatMessages ({ typing }) {
 
@@ -24,11 +25,33 @@ export function ChatMessages ({ typing }) {
       <div className="scrollbar overflow_scrollbar overflow-auto py-2 px-[5%]">
         {
           messages && messages.map((message) => (
-            <Message 
-              message={message} 
-              key={message._id} 
-              me={user._id === message.sender._id} 
-            />
+            <>
+              {
+                message.files.length > 0 ? (
+                  message.files.map((file) => (
+                    <FileMessage 
+                      FileMessage={file}
+                      message={message} 
+                      key={message._id} 
+                      me={user._id === message.sender._id} 
+                    />
+                  ))
+                ) : (
+                  null
+                )
+              }
+              {
+                message.message.length > 0 ? (
+                  <Message 
+                    message={message} 
+                    key={message._id} 
+                    me={user._id === message.sender._id} 
+                  />
+                ) : (
+                  null
+                )
+              }
+            </>
           ))
         }
         {typing === activeConversation._id ? <Typing /> : null}

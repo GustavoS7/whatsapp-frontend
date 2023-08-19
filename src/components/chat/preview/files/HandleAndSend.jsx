@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { ClipLoader } from "react-spinners"
+import VideoThumbnail from "react-video-thumbnail"
 import { useDispatch, useSelector } from "react-redux"
 
 import { Add } from "./Add"
-import { SendIcon } from "../../../../svg"
+import { CloseIcon, SendIcon } from "../../../../svg"
 import { uploadFiles } from "../../../../utils/upload"
-import { send_message } from "../../../../features/chatSlice"
+import { removeFileFromFiles, send_message } from "../../../../features/chatSlice"
 import SocketContext from "../../../../context/socketContext"
 
 function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
@@ -37,6 +39,10 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
     setLoading(false)
   }
 
+  const handleRemoveFile = (idx) => {
+    dispatch(removeFileFromFiles(idx))
+  }
+
   return (
     <div className="w-[97%] items-center flex justify-between mt-2 border-t dark:border-dark_border_2">
       <span></span>
@@ -47,7 +53,7 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
             <div 
               key={idx} 
               className={`
-                w-14 h-14 border mt-2 dark:border-white rounded-md overflow-hidden cursor-pointer
+                w-14 h-14 border mt-2 dark:border-white rounded-md overflow-hidden cursor-pointer relative fileThumbnail
                 ${activeIndex === idx ? 'border-[3px] !border-green_1' : ''}
               `} 
               onClick={() => setActiveIndex(idx)}
@@ -55,10 +61,20 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
               {
                 file.type === 'IMAGE' ? (
                   <img src={file.fileData} alt="" className="w-full h-full object-cover" />
+                ) : file.type === 'VIDEO' ? (
+                  <VideoThumbnail 
+                    videoUrl={file.fileData}
+                  />
                 ) : (
                   <img src={`../../../../images/file/${file.type}.png`} alt="" className="w-8 h-10 mt-1.5 ml-2.5" />
                 )
               }
+              <div 
+                className="removeFileIcon hidden"
+                onClick={() => handleRemoveFile(idx)}
+              >
+                <CloseIcon className='dark:fill-white absolute right-0 top-0 w-4 h-4' />
+              </div>
             </div>
           ))
         }
@@ -70,7 +86,13 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
         className="bg-green_1 w-16 h-16 mt-2 rounded-full flex items-center justify-center cursor-pointer"
         onClick={(evt) => sendMessageHandler(evt)}
       >
-        <SendIcon className="fill-white" />
+        {
+          loading ? (
+            <ClipLoader color="#e9edef" size={25} />
+          ) : (
+            <SendIcon className="fill-white" />
+          )
+        }
       </div>
     </div>
   )

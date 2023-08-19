@@ -39,7 +39,7 @@
   }
 
   .overflow_scrollbar {
-    height: calc(100vh - 115px);
+    height: calc(100vh - 155px);
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -51,6 +51,10 @@
   .hview {
     height: calc(100vh - 290px);
     padding: 8px 0;
+  }
+
+  .fileThumbnail:hover .removeFileIcon {
+    display: block;
   }
 }
 

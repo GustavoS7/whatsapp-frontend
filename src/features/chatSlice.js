@@ -130,6 +130,12 @@ export const chatSlice = createSlice({
     },
     clearFiles: (state, action) => {
       state.files = []
+    },
+    removeFileFromFiles: (state, action) => {
+      const index = action.payload
+      const files = [...state.files]
+      const fileToRemove = [files[index]]
+      state.files = fileToRemove.filter((file) => !fileToRemove.includes(file))
     }
   },
   extraReducers(builder){
@@ -178,6 +184,7 @@ export const chatSlice = createSlice({
       const newConversations = [...state.conversations].filter((c) => c._id !== conversation._id)
       newConversations.unshift(conversation)
       state.conversations = newConversations
+      state.files = []
     })
     .addCase(send_message.rejected, (state, action) => {
       state.status = 'failed'
@@ -186,6 +193,6 @@ export const chatSlice = createSlice({
   }
 })
 
-export const { setActiveConversation, updateMessages, addFiles, clearFiles } = chatSlice.actions
+export const { setActiveConversation, updateMessages, addFiles, clearFiles, removeFileFromFiles } = chatSlice.actions
 
 export default chatSlice.reducer
