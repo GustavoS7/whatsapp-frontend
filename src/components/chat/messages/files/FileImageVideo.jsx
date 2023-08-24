@@ -3,9 +3,9 @@ export function FileImageVideo ({ url, type }) {
     <>
       {
         type === 'IMAGE' ? (
-          <img src={url} alt="" />
+          <img src={url} alt="" className="cursor-pointer" />
         ) : (
-          <video src={url} ></video>
+          <video src={url} controls className="cursor-pointer" ></video>
         )
       }
     </>
