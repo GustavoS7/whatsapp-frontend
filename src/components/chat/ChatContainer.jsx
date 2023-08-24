@@ -8,7 +8,7 @@ import { checkOnlineStatus } from "../../utils/chat"
 import { FilesPreview } from "./preview/files/FilesPreview"
 import { get_conversation_messages } from "../../features/chatSlice"
 
-export function ChatContainer ({ onlineUsers, typing }) {
+export function ChatContainer ({ onlineUsers, typing, callUser }) {
 
   const dispatch = useDispatch()
 
@@ -30,7 +30,7 @@ export function ChatContainer ({ onlineUsers, typing }) {
   return (
     <div className="relative w-full h-full border-l dark:border-l-dark_border_2 select-none overflow-hidden">
       <div>
-        <ChatHeader online={checkOnlineStatus(onlineUsers, user, activeConversation.users)} />
+        <ChatHeader online={checkOnlineStatus(onlineUsers, user, activeConversation.users)} callUser={callUser} />
         
         {
           files.length > 0 ? (
