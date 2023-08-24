@@ -4,9 +4,9 @@ import Conversation from "./Conversation"
 import { checkOnlineStatus } from "../../../utils/chat"
 
 export function Conversations ({ onlineUsers, typing }) {
-  const { conversations, activeConversation } = useSelector((state) => state.chat)
 
   const { user } = useSelector((state) => state.user)
+  const { conversations, activeConversation } = useSelector((state) => state.chat)
 
   return (
     <div className="conversations scrollbar">

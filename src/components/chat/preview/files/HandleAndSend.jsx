@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Add } from "./Add"
 import { CloseIcon, SendIcon } from "../../../../svg"
 import { uploadFiles } from "../../../../utils/upload"
-import { removeFileFromFiles, send_message } from "../../../../features/chatSlice"
 import SocketContext from "../../../../context/socketContext"
+import { removeFileFromFiles, send_message } from "../../../../features/chatSlice"
 
 function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
 

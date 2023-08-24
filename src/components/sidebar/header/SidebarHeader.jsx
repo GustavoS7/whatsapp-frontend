@@ -5,10 +5,9 @@ import { Menu } from "./"
 import { ChatIcon, CommunityIcon, DotsIcon, StoryIcon } from '../../../svg'
 
 export function SidebarHeader () {
-  
-  
 
   const { user } = useSelector((state) => state.user)
+  
   const [showMenu, setShowMenu] = useState(false)
 
   return (

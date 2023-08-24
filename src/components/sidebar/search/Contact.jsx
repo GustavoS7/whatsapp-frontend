@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import SocketContext from "../../../context/socketContext"
 import { open_create_conversation } from "../../../features/chatSlice"
 
-function Contact ({ contact, setSearchResults, socket }) {
+function Contact ({ contact, socket }) {
 
   const dispatch = useDispatch()
+  
   const { user } = useSelector((state) => state.user)
 
   const values = {

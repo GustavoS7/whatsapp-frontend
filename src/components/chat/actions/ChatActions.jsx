@@ -12,12 +12,13 @@ function ChatActions ({ socket }) {
 
   const dispatch = useDispatch()
 
+  const { user } = useSelector((state) => state.user)
+  const { activeConversation, status } = useSelector((state) => state.chat)
+
+  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
   const [showEmoji, setShowEmoji] = useState(false)
   const [showAttachments, setShowAttachments] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const { activeConversation, status } = useSelector((state) => state.chat)
-  const { user } = useSelector((state) => state.user)
-  const [message, setMessage] = useState("")
 
   const textRef = useRef()
 

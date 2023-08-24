@@ -1,5 +1,5 @@
-import { capitalize } from "../../../utils/string"
 import { CallTime } from "./CallTime"
+import { capitalize } from "../../../utils/string"
 
 export function CallArea({ name, totalSecInCall, setTotalSecInCall, callAccepted }) {
   return (

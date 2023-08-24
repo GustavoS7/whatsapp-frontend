@@ -12,8 +12,8 @@ export function ChatContainer ({ onlineUsers, typing, callUser }) {
 
   const dispatch = useDispatch()
 
-  const { activeConversation, files } = useSelector((state) => state.chat)
   const { user } = useSelector((state) => state.user)
+  const { activeConversation, files } = useSelector((state) => state.chat)
 
   const values = {
     token: user.token,

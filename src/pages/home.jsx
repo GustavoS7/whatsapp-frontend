@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Peer from 'simple-peer'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Peer from 'simple-peer'
 
 import { Sidebar } from '../components/sidebar'
+import { Call } from '../components/chat/call/Call'
 import SocketContext from '../context/socketContext'
 import { updateMessages } from '../features/chatSlice'
 import { getConversations } from '../features/chatSlice'
 import { ChatContainer, WhatsappHome } from '../components/chat'
-import { Call } from '../components/chat/call/Call'
 import { getConversationId, getConversationName, getConversationPicture } from '../utils/chat'
 
 const callData = {
@@ -22,14 +22,15 @@ const callData = {
 function Home({ socket }) {
 
   const dispatch = useDispatch()
+
   const { user } = useSelector((state) => state.user)
   const { activeConversation } = useSelector((state) => state.chat)
 
-  const [onlineUsers, setOnlineUsers] = useState([])
-  const [typing, setTyping] = useState(false)
-  const [call, setCall] = useState(callData)
   const [stream, setStream] = useState()
   const [show, setShow] = useState(false);
+  const [call, setCall] = useState(callData)
+  const [typing, setTyping] = useState(false)
+  const [onlineUsers, setOnlineUsers] = useState([])
   const [callAccepted, setCallAccepted] = useState(false)
   const [totalSecInCall, setTotalSecInCall] = useState(0)
 
@@ -38,7 +39,6 @@ function Home({ socket }) {
   const connectionRef = useRef()
 
   const { socketId } = call
-
 
   useEffect(() => {
     socket.emit('join', user._id)

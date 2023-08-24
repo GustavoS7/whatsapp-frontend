@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch, useSelector } from "react-redux"
 
 import { AuthInput } from "./AuthInput"
-import { signInSchema  } from "../../utils/validation"
 import { loginUser } from "../../features/userSlice"
+import { signInSchema  } from "../../utils/validation"
 
 export function LoginForm () {
 

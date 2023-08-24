@@ -3,6 +3,7 @@ import { useRef, useState } from "react"
 export function Picture ({ readablePicture, setReadablePicture, setPicture }) {
 
   const [error, setError] = useState()
+  
   const inputRef = useRef()
 
   const handlePicture = (evt) => {

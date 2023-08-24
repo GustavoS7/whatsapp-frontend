@@ -20,8 +20,9 @@ export function Call({
 }) {
 
   const { receivingCall, callEnded, name } = call
-  const [showActions, setShowActions] = useState(false)
+
   const [toggle, setToggle] = useState(false)
+  const [showActions, setShowActions] = useState(false)
 
   return (
     <>

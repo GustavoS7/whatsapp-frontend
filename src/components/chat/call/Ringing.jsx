@@ -5,7 +5,9 @@ import { CloseIcon, ValidIcon } from "../../../svg"
 export function Ringing({ call, setCall, answerCall, endCall }) {
 
   const { name, picture } = call
+
   const [timer, setTimer] = useState(0)
+  
   let interval
 
   const handleTimer = () => {

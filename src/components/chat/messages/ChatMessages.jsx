@@ -7,8 +7,8 @@ import { FileMessage } from "./files/FileMessage"
 
 export function ChatMessages ({ typing }) {
 
-  const { messages, activeConversation } = useSelector((state) => state.chat)
   const { user } = useSelector((state) => state.user)
+  const { messages, activeConversation } = useSelector((state) => state.chat)
 
   const endRef = useRef()
 

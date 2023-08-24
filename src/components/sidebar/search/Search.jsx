@@ -7,6 +7,7 @@ import { FilterIcon, ReturnIcon, SearchIcon } from "../../../svg"
 export function Search ({ searchLength, setSearchResults }) {
   
   const { user } = useSelector((state) => state.user)
+  
   const [show, setShow] = useState(false)
 
   const handleSearch = async (evt) => {

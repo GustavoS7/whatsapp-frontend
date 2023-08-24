@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/home'
 import { Login } from './pages/login'
 import { Register } from './pages/register'
-import SocketContext from './context/socketContext'
 import { logout } from './features/userSlice'
+import SocketContext from './context/socketContext'
 
 // Socket io
 const socket = io(process.env.REACT_APP_API_ENDPOINT_SOCKET)
@@ -16,7 +16,7 @@ export function App() {
   const dispatch = useDispatch()
 
   const { user } =  useSelector((state) => state.user)
-  const { files } = useSelector((state) => state.chat)
+  
   const { token } = user
 
   return (

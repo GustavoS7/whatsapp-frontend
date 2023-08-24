@@ -9,6 +9,7 @@ import { getConversationId, getConversationName, getConversationPicture } from '
 function Conversation ({ conversation, socket, online, typing }) {
 
   const dispatch = useDispatch()
+  
   const { user } = useSelector((state) => state.user)
   const { activeConversation } = useSelector((state) => state.chat)
 

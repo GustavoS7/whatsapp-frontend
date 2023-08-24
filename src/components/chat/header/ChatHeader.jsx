@@ -14,7 +14,7 @@ import {
 import { capitalize } from "../../../utils/string"
 import SocketContext from "../../../context/socketContext"
 
-function ChatHeader({ online, callUser, socket }) {
+function ChatHeader({ online, callUser }) {
   const { activeConversation } = useSelector((state) => state.chat);
   const { user } = useSelector((state) => state.user);
 

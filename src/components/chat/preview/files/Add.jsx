@@ -5,7 +5,7 @@ import { CloseIcon } from "../../../../svg"
 import { getFileType } from "../../../../utils/file"
 import { addFiles } from "../../../../features/chatSlice"
 
-export function Add ({ setActiveIndex }) {
+export function Add () {
 
   const dispatch = useDispatch()
 
