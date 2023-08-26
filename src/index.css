@@ -235,6 +235,7 @@
 .createGroupAnimation {
   animation: cga 0.5s;
 }
+
 @keyframes cga {
   0% {
     width: 0;

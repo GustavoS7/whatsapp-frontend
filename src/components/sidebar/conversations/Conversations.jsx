@@ -13,14 +13,14 @@ export function Conversations ({ onlineUsers, typing }) {
       <ul>
         {
           conversations && conversations
-          .filter((c) => c.latestMessage || c._id === activeConversation._id)
+          .filter((c) => c.latestMessage || c._id === activeConversation._id || c.isGroup === true)
           .map((conversation) => {
             const check = checkOnlineStatus(onlineUsers, user, conversation.users)
             return (
               <Conversation 
                 conversation={conversation} 
                 key={conversation._id} 
-                online={check ? true : false} 
+                online={!conversation.isGroup && check ? true : false} 
                 typing={typing}
               />
             )

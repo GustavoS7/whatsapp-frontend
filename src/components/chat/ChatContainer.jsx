@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { ChatHeader } from "./header/"
+import { ChatHeader } from "./header"
 import { ChatActions } from "./actions"
 import { ChatMessages } from "./messages/"
 import { checkOnlineStatus } from "../../utils/chat"
@@ -30,7 +30,14 @@ export function ChatContainer ({ onlineUsers, typing, callUser }) {
   return (
     <div className="relative w-full h-full border-l dark:border-l-dark_border_2 select-none overflow-hidden">
       <div>
-        <ChatHeader online={checkOnlineStatus(onlineUsers, user, activeConversation.users)} callUser={callUser} />
+        <ChatHeader 
+          online={
+            activeConversation.isGroup 
+            ? false 
+            : checkOnlineStatus(onlineUsers, user, activeConversation.users)
+          } 
+          callUser={callUser} 
+        />
         
         {
           files.length > 0 ? (

@@ -74,6 +74,31 @@ export const get_conversation_messages = createAsyncThunk(
   }
 )
 
+export const create_group_conversation = createAsyncThunk(
+  'conversation/create_group', 
+  async (values, { rejectWithValue }) => {
+    const { token, name, users } = values
+    try {
+      const { data } = await axios.post(
+        `${CONVERSATION_ENDPOINT}/group`, 
+        {
+          name,
+          users
+        }, 
+        {
+          headers: {
+            Authorization: `bearer ${token}`
+          }
+        }
+      )
+
+      return data
+    } catch (error) {
+      return rejectWithValue(error.response.data.error.message)
+    }
+  }
+)
+
 export const send_message = createAsyncThunk(
   'message/send', 
   async (values, { rejectWithValue }) => {

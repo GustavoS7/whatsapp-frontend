@@ -15,6 +15,7 @@ function Conversation ({ conversation, socket, online, typing }) {
 
   const values = {
     receiver_id: getConversationId(user, conversation.users),
+    isGroup: conversation.isGroup ? conversation._id : false,
     token: user.token
   }
 
@@ -32,14 +33,14 @@ function Conversation ({ conversation, socket, online, typing }) {
         <div className="flex items-center gap-x-3">
           <div className={`relative min-w-[50px] max-w-[50px] h-[50px] rounded-full overflow-hidden ${online ? 'online' : ''}`}>
             <img
-              src={getConversationPicture(user, conversation.users)}
-              alt={getConversationName(user, conversation.users)}
+              src={conversation.isGroup ? conversation.picture : getConversationPicture(user, conversation.users)}
+              alt={conversation.isGroup ? conversation.name : getConversationName(user, conversation.users)}
               className="w-full h-full"
             />
           </div>
           <div className="w-full flex flex-col">
             <h1 className="font-bold flex items-center gap-x-2">
-              {capitalize(getConversationName(user, conversation.users))}
+              {conversation.isGroup ? conversation.name : capitalize(getConversationName(user, conversation.users))}
             </h1>
             <div>
               <div className="flex items-center gap-x-1 dark:text-dark_text_2">
