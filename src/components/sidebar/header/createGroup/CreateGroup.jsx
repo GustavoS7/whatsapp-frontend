@@ -9,7 +9,7 @@ import MultipleSelect from "./MultipleSelect";
 
 import { create_group_conversation } from "../../../../features/chatSlice";
 
-import { ReturnIcon, ValidIcon } from "../../../../svg";
+import { ReturnIcon } from "../../../../svg";
 
 export function CreateGroup ({ setShowCreateGroup }) {
 
@@ -95,12 +95,13 @@ export function CreateGroup ({ setShowCreateGroup }) {
         />
 
         <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2">
-          <button 
+          <button
             className="btn bg-green_1 scale-150 hover:bg-green_500"
-            onClick={() => createGroupHandler}  
+            onClick={() => createGroupHandler}
           >
             {
-              status === 'loading' ? <ClipLoader color="#e9edef" size={25} /> : <ValidIcon className="fill-white mt-2 h-full" />
+              status === 'loading' ? <ClipLoader color="#e9edef" size={25} /> : 'ValidIcon'
+              // <ValidIcon className="fill-white mt-2 h-full" />
             }
           </button>
         </div>

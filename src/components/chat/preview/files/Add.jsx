@@ -45,8 +45,8 @@ export function Add () {
         reader.readAsDataURL(file)
         reader.onload = (e) => {
           dispatch(
-            addFiles({ 
-              file: file, 
+            addFiles({
+              file: file,
               fileData: getFileType(file.type) === 'IMAGE' ? e.target.result : '',
               type: getFileType(file.type)
             })
@@ -57,16 +57,16 @@ export function Add () {
   }
 
   return (
-    <div 
+    <div
       className="w-14 h-14 border dark:border-white rounded-md flex items-center mt-2 justify-center cursor-pointer"
       onClick={() => inputRef.current.click()}
     >
       <span className="rotate-45">
         <CloseIcon className="dark:fill-dark_svg_1" />
       </span>
-      
-      <input 
-        type="file" 
+
+      <input
+        type="file"
         hidden
         multiple
         ref={inputRef}

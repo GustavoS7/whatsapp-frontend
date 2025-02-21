@@ -9,7 +9,7 @@ import { CreateGroup } from "./createGroup"
 export function SidebarHeader () {
 
   const { user } = useSelector((state) => state.user)
-  
+
   const [showMenu, setShowMenu] = useState(false)
   const [showCreateGroup, setShowCreateGroup] = useState(false)
 
@@ -19,8 +19,8 @@ export function SidebarHeader () {
         <div className="w-full flex items-center justify-between">
           <button className="btn">
             <img 
-              src={user.picture} 
-              alt={user.name} 
+              src={user.picture}
+              alt={user.name}
               className="w-full h-full rounded-full object-cover"
             />
           </button>
@@ -41,7 +41,7 @@ export function SidebarHeader () {
               </button>
             </li>
             <li className="relative">
-              <button 
+              <button
                 className={`btn ${showMenu ? 'bg-dark_hover_1' : ''}`}
                 onClick={() => setShowMenu((prev) => !prev)}
               >

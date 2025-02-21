@@ -15,7 +15,7 @@ export function Sidebar ({ onlineUsers, typing }) {
 
       <Notifications />
 
-      <Search searchLength={searchResults.length} setSearchResults={setSearchResults} />      
+      <Search searchLength={searchResults.length} setSearchResults={setSearchResults} />
 
       {
         searchResults.length > 0 ? (

@@ -11,9 +11,9 @@ export function SearchResults ({ searchResults, setSearchResults }) {
         <ul>
           {
             searchResults && searchResults.map((user) => (
-              <Contact 
-                contact={user} 
-                key={user._id} 
+              <Contact
+                contact={user}
+                key={user._id}
                 setSearchResults={setSearchResults}
               />
             ))

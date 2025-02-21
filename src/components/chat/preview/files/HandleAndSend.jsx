@@ -50,12 +50,9 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
       <div className="flex gap-x-2">
         {
           files.map((file, idx) => (
-            <div 
-              key={idx} 
-              className={`
-                w-14 h-14 border mt-2 dark:border-white rounded-md overflow-hidden cursor-pointer relative fileThumbnail
-                ${activeIndex === idx ? 'border-[3px] !border-green_1' : ''}
-              `} 
+            <div
+              key={idx}
+              className={`w-14 h-14 border mt-2 dark:border-white rounded-md overflow-hidden cursor-pointer relative fileThumbnail ${activeIndex === idx ? 'border-[3px] !border-green_1' : ''}`}
               onClick={() => setActiveIndex(idx)}
             >
               {
@@ -69,7 +66,7 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
                   <img src={`../../../../images/file/${file.type}.png`} alt="" className="w-8 h-10 mt-1.5 ml-2.5" />
                 )
               }
-              <div 
+              <div
                 className="removeFileIcon hidden"
                 onClick={() => handleRemoveFile(idx)}
               >
@@ -78,11 +75,11 @@ function HandleAndSend ({ activeIndex, setActiveIndex, message, socket }) {
             </div>
           ))
         }
-        
-        <Add setActiveIndex={setActiveIndex} /> 
+
+        <Add setActiveIndex={setActiveIndex} />
       </div>
-      
-      <div 
+
+      <div
         className="bg-green_1 w-16 h-16 mt-2 rounded-full flex items-center justify-center cursor-pointer"
         onClick={(evt) => sendMessageHandler(evt)}
       >

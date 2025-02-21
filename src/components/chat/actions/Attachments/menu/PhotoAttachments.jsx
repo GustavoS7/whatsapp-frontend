@@ -32,9 +32,9 @@ export function PhotoAttachment () {
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onload = (e) => {
-          dispatch(addFiles({ 
-            file: file, 
-            fileData: e.target.result, 
+          dispatch(addFiles({
+            file: file,
+            fileData: e.target.result,
             type: getFileType(file.type)
           }))
         }
@@ -44,19 +44,19 @@ export function PhotoAttachment () {
 
   return (
     <li>
-      <button 
-        type="button" 
-        className="bg-[#bf59cf] rounded-full" 
+      <button
+        type="button"
+        className="bg-[#bf59cf] rounded-full"
         onClick={() => inputRef.current.click()}
       >
         <PhotoIcon />
       </button>
-      <input 
-        type="file" 
-        hidden 
+      <input
+        type="file"
+        hidden
         multiple
-        ref={inputRef} 
-        accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm" 
+        ref={inputRef}
+        accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/mpeg,video/webm"
         onChange={imageHandler}
       />
     </li>

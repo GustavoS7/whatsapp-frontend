@@ -16,7 +16,7 @@ export function Header ({ activeIndex }) {
   return (
     <div className="w-full">
       <div className="full flex items-center justify-between">
-        <div className="cursor-pointer translate-x-4" onClick={clearFilesHandler} >
+        <div className="cursor-pointer translate-x-4" onClick={clearFilesHandler}>
           <CloseIcon className="dark:fill-dark_svg_1" />
         </div>
 

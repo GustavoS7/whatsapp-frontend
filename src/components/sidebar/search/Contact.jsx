@@ -29,9 +29,9 @@ function Contact ({ contact, socket }) {
         <div className="flex items-center gap-x-3">
           <div className="relative min-w-[50px] max-w-[50px] h-[50px] rounded-full overflow-hidden">
             <img 
-              src={contact.picture} 
-              alt={contact.name} 
-              className="w-full h-full" 
+              src={contact.picture}
+              alt={contact.name}
+              className="w-full h-full"
             />
           </div>
           <div className="w-full flex flex-col">

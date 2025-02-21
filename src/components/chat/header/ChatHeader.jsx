@@ -5,7 +5,7 @@ import {
   CallIcon,
   DotsIcon,
   SearchLargeIcon,
-  VideoCallIcon,
+  // VideoCallIcon,
 } from "../../../svg"
 import {
   getConversationName,
@@ -57,7 +57,8 @@ function ChatHeader({ online, callUser }) {
           {1 == 1 ? (
             <li onClick={() => callUser()}>
               <button className="btn">
-                <VideoCallIcon />
+                {/* <VideoCallIcon /> */}
+                VideoCallIcon
               </button>
             </li>
           ) : null}

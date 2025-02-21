@@ -5,8 +5,8 @@ export function Attachments ({ showAttachments, setShowAttachments, setShowEmoji
 
   return (
     <li className="relative">
-      <button 
-        className="btn" 
+      <button
+        className="btn"
         type="button"
         onClick={() => {
           setShowEmoji(false)

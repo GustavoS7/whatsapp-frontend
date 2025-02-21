@@ -39,16 +39,16 @@ function ChatActions ({ socket }) {
   }
 
   return (
-    <form 
+    <form
       onSubmit={(evt) => sendMessageHanlder(evt)}
       className="dark:bg-dark_bg_2 h-[60px] w-full flex items-center absolute bottom-0 py-2 px-4 select-none"
     >
       <div className="w-full flex items-center ga-x-2">
         <ul className="flex gap-x-2">
-          <EmojiPickerApp 
+          <EmojiPickerApp
             message={message}
             setMessage={setMessage}
-            textRef={textRef} 
+            textRef={textRef}
             showEmoji={showEmoji}
             setShowEmoji={setShowEmoji}
             setShowAttachments={setShowAttachments}
@@ -59,7 +59,7 @@ function ChatActions ({ socket }) {
             setShowEmoji={setShowEmoji}
           />
         </ul>
-        <Input 
+        <Input
           message={message}
           setMessage={setMessage}
           textRef={textRef}

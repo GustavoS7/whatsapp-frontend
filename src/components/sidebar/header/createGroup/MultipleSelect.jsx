@@ -3,11 +3,11 @@ import Select from 'react-select'
 export default function MultipleSelect({ selectedUsers, searchResults, setSelectedUsers, handleSearch }) {
   return (
     <div className='mt-4'>
-      <Select 
-        options={searchResults} 
+      <Select
+        options={searchResults}
         onChange={setSelectedUsers}
         onKeyDown={(e) => handleSearch(e)}
-        placeholder="Search, select users" 
+        placeholder="Search, select users"
         isMulti
         formatOptionLabel={(user) => (
           <div className='flex items-center gap-1'>

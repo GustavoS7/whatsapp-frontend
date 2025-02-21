@@ -29,11 +29,11 @@ export function ChatMessages ({ typing }) {
               {
                 message.files.length > 0 ? (
                   message.files.map((file) => (
-                    <FileMessage 
+                    <FileMessage
                       FileMessage={file}
-                      message={message} 
-                      key={message._id} 
-                      me={user._id === message.sender._id} 
+                      message={message}
+                      key={message._id}
+                      me={user._id === message.sender._id}
                     />
                   ))
                 ) : (
@@ -42,10 +42,10 @@ export function ChatMessages ({ typing }) {
               }
               {
                 message.message.length > 0 ? (
-                  <Message 
-                    message={message} 
-                    key={message._id} 
-                    me={user._id === message.sender._id} 
+                  <Message
+                    message={message}
+                    key={message._id}
+                    me={user._id === message.sender._id}
                   />
                 ) : (
                   null

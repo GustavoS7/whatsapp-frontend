@@ -27,7 +27,7 @@ export function EmojiPickerApp ({ textRef, message, setMessage, showEmoji, setSh
   return (
     <li className="w-full">
       <button 
-        className="btn" 
+        className="btn"
         type="button"
         onClick={() => {
           setShowAttachments(false)

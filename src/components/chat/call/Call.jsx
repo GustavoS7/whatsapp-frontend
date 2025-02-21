@@ -5,15 +5,15 @@ import { Ringing } from "./Ringing"
 import { CallArea } from "./CallArea"
 import { CallActions } from "./CallActions"
 
-export function Call({ 
-  call, 
-  setCall, 
+export function Call({
+  call,
+  setCall,
   callAccepted,
-  myVideo, 
-  userVideo, 
-  stream, 
-  answerCall, 
-  show, 
+  myVideo,
+  userVideo,
+  stream,
+  answerCall,
+  show,
   endCall,
   totalSecInCall,
   setTotalSecInCall
@@ -26,12 +26,12 @@ export function Call({
 
   return (
     <>
-      <div 
+      <div
         className={`
-          fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+          fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
           w-[350px] h-[550px] z-10 rounded-2xl overflow-hidden callbg
           ${receivingCall && !callAccepted ? 'hidden' : ''}
-        `} 
+        `}
         onMouseOver={() => setShowActions(true)}
         onMouseOut={() => setShowActions(false)}
       >
@@ -45,7 +45,7 @@ export function Call({
               setTotalSecInCall={setTotalSecInCall}
               callAccepted={callAccepted}
             />
-            
+
             {
               showActions ? (
                 <CallActions endCall={endCall} />
@@ -58,12 +58,12 @@ export function Call({
             {
               callAccepted && !callEnded ? (
                 <div>
-                  <video 
-                    ref={userVideo} 
-                    playsInline 
-                    muted 
-                    autoPlay 
-                    className={!toggle ? 'largeVideoCall' : 'SmallVideoCall'} 
+                  <video
+                    ref={userVideo}
+                    playsInline
+                    muted
+                    autoPlay
+                    className={!toggle ? 'largeVideoCall' : 'SmallVideoCall'}
                     onClick={() => setToggle((prev) => !prev)}
                   ></video>
                 </div>
@@ -72,12 +72,12 @@ export function Call({
             {
               stream ? (
                 <div>
-                  <video 
-                    ref={myVideo} 
+                  <video
+                    ref={myVideo}
                     playsInline 
-                    muted 
-                    autoPlay 
-                    className={`${toggle ? 'SmallVideoCall' : 'largeVideoCall'} ${showActions ? 'moveVideoCall' : ''}`} 
+                    muted
+                    autoPlay
+                    className={`${toggle ? 'SmallVideoCall' : 'largeVideoCall'} ${showActions ? 'moveVideoCall' : ''}`}
                     onClick={() => setToggle((prev) => !prev)}
                   ></video>
                 </div>

@@ -32,13 +32,13 @@ export const getConversations = createAsyncThunk(
 )
 
 export const open_create_conversation = createAsyncThunk(
-  'conversation/open_create', 
+  'conversation/open_create',
   async (values, { rejectWithValue }) => {
     const { token, receiver_id } = values
     try {
       const { data } = await axios.post(
-        CONVERSATION_ENDPOINT, 
-        { receiver_id }, 
+        CONVERSATION_ENDPOINT,
+        { receiver_id },
         {
           headers: {
             Authorization: `bearer ${token}`
@@ -54,12 +54,12 @@ export const open_create_conversation = createAsyncThunk(
 )
 
 export const get_conversation_messages = createAsyncThunk(
-  'conversation/messages', 
+  'conversation/messages',
   async (values, { rejectWithValue }) => {
     const { token, conversation_id } = values
     try {
       const { data } = await axios.get(
-        `${MESSAGE_ENDPOINT}/${conversation_id}`, 
+        `${MESSAGE_ENDPOINT}/${conversation_id}`,
         {
           headers: {
             Authorization: `bearer ${token}`
@@ -75,16 +75,16 @@ export const get_conversation_messages = createAsyncThunk(
 )
 
 export const create_group_conversation = createAsyncThunk(
-  'conversation/create_group', 
+  'conversation/create_group',
   async (values, { rejectWithValue }) => {
     const { token, name, users } = values
     try {
       const { data } = await axios.post(
-        `${CONVERSATION_ENDPOINT}/group`, 
+        `${CONVERSATION_ENDPOINT}/group`,
         {
           name,
           users
-        }, 
+        },
         {
           headers: {
             Authorization: `bearer ${token}`
@@ -100,12 +100,12 @@ export const create_group_conversation = createAsyncThunk(
 )
 
 export const send_message = createAsyncThunk(
-  'message/send', 
+  'message/send',
   async (values, { rejectWithValue }) => {
     const { token, message, conversation_id, files } = values
     try {
       const { data } = await axios.post(
-        MESSAGE_ENDPOINT, 
+        MESSAGE_ENDPOINT,
         {
           message,
           conversation_id,
@@ -163,7 +163,7 @@ export const chatSlice = createSlice({
       state.files = fileToRemove.filter((file) => !fileToRemove.includes(file))
     }
   },
-  extraReducers(builder){
+  extraReducers(builder) {
     builder
     .addCase(getConversations.pending, (state, action) => {
       state.status = 'loading'

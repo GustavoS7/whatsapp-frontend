@@ -15,7 +15,7 @@ export function CallArea({ name, totalSecInCall, setTotalSecInCall, callAccepted
             totalSecInCall === 0 ? (
               <span className="text-dark_text_1">Ringing...</span>
             ) : (
-              <CallTime 
+              <CallTime
                 totalSecInCall={totalSecInCall}
                 setTotalSecInCall={setTotalSecInCall}
                 callAccepted={callAccepted}

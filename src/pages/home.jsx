@@ -79,8 +79,8 @@ function Home({ socket }) {
 
   const callUser = () => {
     enableMedia()
-    setCall({ 
-      ...call, 
+    setCall({
+      ...call,
       name: getConversationName(user, activeConversation.users),
       picture: getConversationPicture(user, activeConversation.users)
     })
@@ -181,19 +181,19 @@ function Home({ socket }) {
         }
       </div>
 
-      <Call 
-        call={call} 
+      {/* <Call
+        call={call}
         stream={stream}
-        setCall={setCall} 
+        setCall={setCall}
         myVideo={myVideo}
         userVideo={userVideo}
-        callAccepted={callAccepted} 
+        callAccepted={callAccepted}
         answerCall={answerCall}
         show={show}
         endCall={endCall}
         totalSecInCall={totalSecInCall}
         setTotalSecInCall={setTotalSecInCall}
-      />
+      /> */}
     </div>
   )
 }

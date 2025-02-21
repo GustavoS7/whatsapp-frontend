@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 
-import { CloseIcon, ValidIcon } from "../../../svg"
+// import { CloseIcon, ValidIcon } from "../../../svg"
 
 export function Ringing({ call, setCall, answerCall, endCall }) {
 
   const { name, picture } = call
 
   const [timer, setTimer] = useState(0)
-  
+
   let interval
 
   const handleTimer = () => {
@@ -45,12 +45,14 @@ export function Ringing({ call, setCall, answerCall, endCall }) {
         <ul className="flex items-center gap-x-2">
           <li onClick={endCall}>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-red-500">
-              <CloseIcon className="fill-white w-5" />
+              Close
+              {/* <CloseIcon className="fill-white w-5" /> */}
             </button>
           </li>
           <li onClick={answerCall}>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500">
-              <ValidIcon className="fill-white w-6 mt-2" />
+              valid
+              {/* <ValidIcon className="fill-white w-6 mt-2" /> */}
             </button>
           </li>
         </ul>

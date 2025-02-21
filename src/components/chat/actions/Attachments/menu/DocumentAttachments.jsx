@@ -50,15 +50,15 @@ export function DocumentAttachment() {
 
   return (
     <li>
-      <button 
-        type="button" 
-        className="bg-[#5f66cd] rounded-full" 
+      <button
+        type="button"
+        className="bg-[#5f66cd] rounded-full"
         onClick={() => inputRef.current.click()}
       >
         <DocumentIcon />
       </button>
-      <input 
-        type="file" 
+      <input
+        type="file"
         hidden
         multiple
         ref={inputRef}

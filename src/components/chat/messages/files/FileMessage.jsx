@@ -5,7 +5,7 @@ import { FileImageVideo } from "./FileImageVideo"
 import TraingleIcon from '../../../../svg/Triangle'
 
 export function FileMessage({ FileMessage, message, me }) {
-  
+
   const { type, file } = FileMessage
 
   return (
@@ -14,20 +14,16 @@ export function FileMessage({ FileMessage, message, me }) {
         {
           !me && message.conversation.isGroup && (
             <div className="absolute top-0.5 left-[-37px]">
-              <img 
+              <img
                 src={message.sender.picture} 
-                alt="" 
+                alt=""
                 className="w-8 h-8 rounded-full"
               />
             </div>
           )
         }
         <div 
-          className={
-            `relative h-full dark:text-dark_text_1 rounded-lg 
-            ${ me ? 'border-[3px] border-green_3' : 'dark:bg-dark_bg_2' } 
-            ${me && file.public_id.split('.')[1] === 'png' ? 'bg-white' : 'bg-green_3 p-1'}
-          `}
+          className={`relative h-full dark:text-dark_text_1 rounded-lg ${me ? 'border-[3px] border-green_3' : 'dark:bg-dark_bg_2'} ${me && file.public_id.split('.')[1] === 'png' ? 'bg-white' : 'bg-green_3 p-1'}`}
         >
           <p className={`h-full text-sm ${type !== 'IMAGE' && type !== 'VIDEO' ? 'pb-5' : '' }`}>
             {

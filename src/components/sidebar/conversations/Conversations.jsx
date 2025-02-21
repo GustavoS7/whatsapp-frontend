@@ -17,10 +17,10 @@ export function Conversations ({ onlineUsers, typing }) {
           .map((conversation) => {
             const check = checkOnlineStatus(onlineUsers, user, conversation.users)
             return (
-              <Conversation 
-                conversation={conversation} 
-                key={conversation._id} 
-                online={!conversation.isGroup && check ? true : false} 
+              <Conversation
+                conversation={conversation}
+                key={conversation._id}
+                online={!conversation.isGroup && check ? true : false}
                 typing={typing}
               />
             )

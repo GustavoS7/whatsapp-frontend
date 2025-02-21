@@ -30,15 +30,15 @@ export function ChatContainer ({ onlineUsers, typing, callUser }) {
   return (
     <div className="relative w-full h-full border-l dark:border-l-dark_border_2 select-none overflow-hidden">
       <div>
-        <ChatHeader 
+        <ChatHeader
           online={
-            activeConversation.isGroup 
-            ? false 
+            activeConversation.isGroup
+            ? false
             : checkOnlineStatus(onlineUsers, user, activeConversation.users)
-          } 
+          }
           callUser={callUser} 
         />
-        
+
         {
           files.length > 0 ? (
             <FilesPreview />
